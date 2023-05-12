@@ -8,7 +8,7 @@ const Show = db.define("shows", {
     rating: DataTypes.INTEGER,
     status: DataTypes.STRING,
 });
-// GET all shows
+// get all shows
 router.get('/', async (req, res) => {
     try {
       const shows = await db.Show.findAll();
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // GET one show
+  // get individual show
   router.get('/:id', async (req, res) => {
     try {
       const show = await db.Show.findByPk(req.params.id);
@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // GET shows of a particular genre (genre in req.params)
+  // get shows of a particular genre (genre in req.params)
   router.get('/genre/:genre', async (req, res) => {
     try {
       const shows = await db.Show.findAll({
@@ -48,7 +48,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // PUT update rating of a show that has been watched
+  // update rating of a show that has been watched
   router.put('/:id/rating', async (req, res) => {
     try {
       const show = await db.Show.findByPk(req.params.id);
@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // PUT update the status of a show
+  // update the status of a show
   router.put('/:id/status', async (req, res) => {
     try {
       const show = await db.Show.findByPk(req.params.id);
@@ -80,7 +80,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // DELETE a show
+  // delete a show
   router.delete('/:id', async (req, res) => {
     try {
       const show = await db.Show.findByPk(req.params.id);
@@ -95,4 +95,4 @@ router.get('/', async (req, res) => {
     }
   })
 //exports
-module.exports = Show,router;
+module.exports = {Show, router};
